@@ -38,6 +38,7 @@ async function run() {
     //   const query = { ObjectId: _id };
     //   const category = await categoryCollection.find(query);
     // });
+
     app.get("/category", async (req, res) => {
       const query = {};
       const options = await categoryCollection.find(query).toArray();
