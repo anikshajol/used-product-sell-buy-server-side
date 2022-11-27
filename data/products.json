@@ -1,0 +1,74 @@
+[
+  {
+    "_id": 10,
+    "category_id": 1,
+    "picture": "https://i.ibb.co/m8QBYLC/Samsung-Galaxy-F13.jpg",
+    "sell_price": 15000,
+    "buying_price": 25000,
+    "used_duration": 1,
+    "name": "Android",
+    "model": "Galaxy F13",
+    "company": "Samsung",
+    "location": "Banani, Dhaka,Bangladesh"
+  },
+  {
+    "_id": 11,
+    "category_id": 1,
+    "picture": "https://i.ibb.co/hFD37S5/Oneplus-8-interstellar-glow.jpg",
+    "sell_price": 28000,
+    "buying_price": 40000,
+    "used_duration": 2,
+    "name": "Android",
+    "model": "8",
+    "company": "OnePlus",
+    "location": "Azimpur, Dhaka, Bangladesh"
+  },
+  {
+    "_id": 12,
+    "category_id": 3,
+    "picture": "https://i.ibb.co/hRzRVJb/Nokia-2660-Flip-Red.jpg",
+    "sell_price": 5000,
+    "buying_price": 9000,
+    "used_duration": 1,
+    "name": "Feature",
+    "model": "2780 Flip",
+    "company": "Nokia",
+    "location": "Mirpur 10, Dhaka, Bangladesh"
+  },
+  {
+    "_id": 13,
+    "category_id": 3,
+    "picture": "https://i.ibb.co/zVTPV9y/Nokia-8210-4-G-Blue.jpg",
+    "sell_price": 3500,
+    "buying_price": 6000,
+    "used_duration": 3,
+    "name": "Nokia",
+    "model": "8210 4G",
+    "company": "KAGGLE",
+    "location": "Tangail-Sadar, Dhaka, Bangladesh"
+  },
+  {
+    "_id": 14,
+    "category_id": 2,
+    "picture": "https://i.ibb.co/hgKPyYz/Apple-i-Phone-XS-Max-Gold.jpg",
+    "sell_price": 40000,
+    "buying_price": 90000,
+    "used_duration": 2,
+    "name": "IOS",
+    "model": "xs",
+    "company": "iPhone",
+    "location": "Sylhet"
+  },
+  {
+    "_id": 15,
+    "category_id": 2,
+    "picture": "https://i.ibb.co/sJdMDtM/Apple-i-Phone-7-Plus-Black.jpg",
+    "sell_price": 20000,
+    "buying_price": 40000,
+    "used_duration": 3,
+    "name": "IOS",
+    "model": "7 Plus",
+    "company": "iPhone",
+    "location": "Dhanmondi, Dhaka, Bangladesh"
+  }
+]
