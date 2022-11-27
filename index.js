@@ -38,6 +38,7 @@ async function run() {
     const productsCollection = client.db("sbSwap").collection("products");
     const usersCollection = client.db("sbSwap").collection("users");
     const categoryCollection = client.db("sbSwap").collection("category");
+    const bookingsCollection = client.db("sbSwap").collection("bookings");
 
     // get products
     app.get("/products", async (req, res) => {
@@ -89,19 +90,6 @@ async function run() {
     app.post("/bookings", async (req, res) => {
       const booking = req.body;
       console.log(booking);
-      const query = {
-        buying: booking.appointmentDate,
-        email: booking.email,
-        treatment: booking.treatment,
-      };
-
-      const alreadyBooked = await bookingsCollection.find(query).toArray();
-
-      if (alreadyBooked.length) {
-        const message = `You already have a booking on ${booking.appointmentDate}`;
-        return res.send({ acknowledged: false, message });
-      }
-
       const result = await bookingsCollection.insertOne(booking);
       res.send(result);
     });
