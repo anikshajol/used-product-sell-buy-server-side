@@ -32,7 +32,7 @@ function verifyJWT(req, res, next) {
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (err, decoded) {
     if (err) {
-      return res.status(403).send({ message: "forbidden access" });
+      return res.status(403).send({ message: " access forbidden" });
     }
     req.decoded = decoded;
     next();
@@ -115,6 +115,50 @@ async function run() {
       res.status(403).send({ accessToken: "" });
     });
 
+    app.get("/users", async (req, res) => {
+      const query = {};
+      const users = await usersCollection.find(query).toArray();
+      res.send(users);
+    });
+
+    app.get("/users/admin/:email", async (req, res) => {
+      const email = req.params.email;
+      const query = { email };
+      const user = await usersCollection.findOne(query);
+      res.send({ isAdmin: user?.role === "admin" });
+    });
+
+    app.get("/users/admin/:email", async (req, res) => {
+      const email = req.params.email;
+      const query = { email };
+      const user = await usersCollection.findOne(query);
+      res.send({ isAdmin: user?.role === "admin" });
+    });
+
+    app.put("/users/admin/:id", verifyJWT, async (req, res) => {
+      const decodedEmail = req.decoded.email;
+      const query = { email: decodedEmail };
+      const user = await usersCollection.findOne(query);
+      if (user?.role !== "admin") {
+        return res.status(403).send({ message: "Access forbidden" });
+      }
+
+      const id = req.params.id;
+      const filter = { _id: ObjectId(id) };
+      const options = { upsert: true };
+      const updatedDoc = {
+        $set: {
+          role: "admin",
+        },
+      };
+      const result = await usersCollection.updateOne(
+        filter,
+        updatedDoc,
+        options
+      );
+      res.send(result);
+    });
+
     app.post("/users", async (req, res) => {
       const user = req.body;
       console.log(user);
@@ -129,14 +173,14 @@ async function run() {
 
     // booking
 
-    app.get("/bookings", async (req, res) => {
+    app.get("/bookings", verifyJWT, async (req, res) => {
       const email = req.query.email;
       console.log("token ", req.headers.authorization);
-      // const decodedEmail = req.decoded.email;
+      const decodedEmail = req.decoded.email;
 
-      // if (email !== decodedEmail) {
-      //   return res.status(403).send({ message: "forbidden access" });
-      // }
+      if (email !== decodedEmail) {
+        return res.status(403).send({ message: "Access forbidden" });
+      }
 
       const query = { email: email };
       const bookings = await bookingsCollection.find(query).toArray();
